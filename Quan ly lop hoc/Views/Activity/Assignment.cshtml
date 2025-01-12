@@ -1,0 +1,28 @@
+@model AssignmentModel
+
+@{
+  ViewData["Title"] = Model.Name;
+  ViewBag.Assignment = Model;
+  UserModel user = ViewBag.User;
+}
+
+<div class="container">
+  @{
+    await Html.RenderPartialAsync("Header");
+  }
+  <div class="page-content">
+    <div class="actions d-flex w-100 justify-content-end">
+      <!-- @if (ViewBag.RoleInCourse == UserModel.ROLE_TEACHER || ViewBag.RoleInCourse == UserModel.ROLE_ADMIN)
+      {
+        <a href="#" id="addActivityBtn" class="btn btn-outline btn-outline-secondary">
+          <i class="fa-solid fa-plus"></i>
+          <span>Thêm hoạt động</span>
+        </a>
+      } -->
+    </div>
+    <div id="list-activities">
+    </div>
+  </div>
+  <input type="hidden" name="CourseId" id="form-input-course-id" value="@ViewBag.Assignment.CourseId" required />
+  </div>
+  <!-- <script type="text/javascript" src="~/js/courseActivity.js"></script> -->

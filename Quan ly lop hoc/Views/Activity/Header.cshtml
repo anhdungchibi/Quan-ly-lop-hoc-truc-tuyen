@@ -1,0 +1,26 @@
+@{
+	UserModel user = ViewBag.User;
+	AssignmentModel assignment = ViewBag.Assignment;
+}
+
+<div class="course-header">
+
+	<div class="details">
+		<div class="info">
+			<h2 class="name"><i class="fa-regular fa-file"></i> @assignment.Name</h2>
+			<div>@assignment.StartDate - @assignment.EndDate</div>
+			<div class="description">@assignment.Description</div>
+		</div>
+
+		<div class="passing-grade">
+			<label>Điểm tối thiểu</label>
+			<div><h2>@assignment.PassingGrade</h2></div>
+			@if (ViewBag.RoleInCourse == UserModel.ROLE_TEACHER || ViewBag.RoleInCourse == UserModel.ROLE_ADMIN)
+			{
+			<a href="/assignment/edit/@assignment.Id" id="addActivityBtn" class="btn btn-secondary">
+				<span>Chỉnh sửa</span>
+			</a>
+			}
+		</div>
+	</div>
+</div>

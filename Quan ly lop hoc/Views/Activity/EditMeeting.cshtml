@@ -1,0 +1,69 @@
+@model MeetingModel;
+
+@{
+  ViewData["Title"] = "Sua Phòng họp";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h2 class="title">@ViewData["Title"]</h2>
+
+        <span class="actions"></span>
+    </div>
+
+	<div class="page-content">
+    <form action="/meeting/edit" method="post">
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+                  <input type="text" asp-for="Name" name="name" id="form-input-name" class="form-control"
+            placeholder="Ten" required value="@Model.Name">
+          <label for="form-input-name">Ten cuoc hop</label>
+        </div>
+        <span asp-validation-for="Name"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+                  <input type="text" asp-for="url" name="url" id="form-input-url" class="form-control"
+            placeholder="Duong dan" required value="@Model.url">
+          <label for="form-input-url">Duong dan cuoc hop</label>
+        </div>
+        <span asp-validation-for="url"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+          <input type="datetime-local" asp-for="StartDate" name="startDate" id="form-input-start-date" class="form-control"
+            placeholder="Ngay bat dau" required value='@Model.StartDate.ToString("yyyy-MM-ddTHH:mm")'>
+          <label for="form-input-start-date">Ngay bat dau</label>
+        </div>
+        <span asp-validation-for="StartDate"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+          <input type="datetime-local" asp-for="EndDate" name="endDate" id="form-input-end-date" class="form-control"
+            placeholder="Ngay ket thuc" required value='@Model.EndDate.ToString("yyyy-MM-ddTHH:mm")'>
+          <label for="form-input-end-date">Ngay ket thuc</label>
+        </div>
+        <span asp-validation-for="EndDate"></span>
+      </div>
+      <input type="hidden" name="courseId" value="@Model.CourseId" asp-for="CourseId" required />
+      <input type="hidden" name="id" value="@Model.Id" asp-for="Id" required />
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+  </div>
+</div>

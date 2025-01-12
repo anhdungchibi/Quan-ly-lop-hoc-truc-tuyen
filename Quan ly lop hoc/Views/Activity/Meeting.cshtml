@@ -1,0 +1,27 @@
+@model MeetingModel
+
+@{
+  ViewData["Title"] = Model.Name;
+  UserModel user = ViewBag.User;
+}
+
+<div class="course-header">
+
+	<div class="details">
+		<div class="info">
+			<h2 class="name"><i class="fa-regular fa-file"></i> @Model.Name</h2>
+			<div>Ngay bat dau: @Model.StartDate</div>
+			<div>Ngay ket thuc: @Model.EndDate</div>
+			<div>Duong dan: @Model.url</div>
+		</div>
+
+		<div class="passing-grade">
+			@if (ViewBag.RoleInCourse == UserModel.ROLE_TEACHER || ViewBag.RoleInCourse == UserModel.ROLE_ADMIN)
+			{
+			<a href="/meeting/edit/@Model.Id" id="addActivityBtn" class="btn btn-secondary">
+				<span>Chỉnh sửa</span>
+			</a>
+			}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+@model ActivityQuizViewModel;
+
+@{
+  ViewData["Title"] = "Thêm Phòng họp mới";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h2 class="title">@ViewData["Title"]</h2>
+
+        <span class="actions"></span>
+    </div>
+
+	<div class="page-content">
+    <form asp-action="CreateMeeting" method="post">
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+                  <input type="text" asp-for="Meeting.Name" name="Meeting.Name" id="form-input-name" class="form-control"
+            placeholder="@Html.DisplayNameFor(model => model.Meeting.Name)" required>
+          <label for="form-input-name">@Html.DisplayNameFor(model => model.Meeting.Name)</label>
+        </div>
+        <span asp-validation-for="Meeting.Name"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+                  <input type="text" asp-for="Meeting.url" name="Meeting.url" id="form-input-url" class="form-control"
+            placeholder="@Html.DisplayNameFor(model => model.Meeting.url)" required>
+          <label for="form-input-url">@Html.DisplayNameFor(model => model.Meeting.url)</label>
+        </div>
+        <span asp-validation-for="Meeting.url"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+          <input type="datetime-local" asp-for="Meeting.StartDate" name="Meeting.StartDate" id="form-input-start-date" class="form-control"
+            placeholder="@Html.DisplayNameFor(model => model.Meeting.StartDate)" required>
+          <label for="form-input-start-date">@Html.DisplayNameFor(model => model.Meeting.StartDate)</label>
+        </div>
+        <span asp-validation-for="Meeting.StartDate"></span>
+      </div>
+      <div class="input-group has-validation mb-3">
+        <span class="input-group-text">
+          <i class="fa-solid fa-key"></i>
+        </span>
+
+        <div class="form-floating">
+          <input type="datetime-local" asp-for="Meeting.EndDate" name="Meeting.EndDate" id="form-input-end-date" class="form-control"
+            placeholder="@Html.DisplayNameFor(model => model.Meeting.EndDate)" required>
+          <label for="form-input-end-date">@Html.DisplayNameFor(model => model.Meeting.EndDate)</label>
+        </div>
+        <span asp-validation-for="Meeting.EndDate"></span>
+      </div>
+      <input type="hidden" name="Meeting.CourseId" value="@ViewBag.CourseId" asp-for="Meeting.CourseId" required />
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+  </div>
+</div>
